@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<div class="example-wrapper">
+	
+
+		
+		<div class="container">
+			<h2>Les photos</h2>
+			<div class="row flex">
+				{% for photo in photos %}
+					<div class="col-3">
+						<div class="card">
+							<img class="card-img-top" src="{{ vich_uploader_asset(photo, 'imageFile') }}" alt="photo de {{ photo.user.pseudo}}">
+							<div class="card-boby">
+								<h5 class="card-title">
+									<a href="{{ path('photo.show', {id: photo.id}) }}">{{ photo.title }}</a>
+								</h5>
+								<h5>Postée par : {{photo.user.pseudo}}</h5>
+								<p class="card-text">Postée le :
+									{{ photo.postAt }}</p>
+								<div class="text-primary" style="font-weight: bold; font-size: 1.2rem;">commentaires : {{photo.comments|length}}</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

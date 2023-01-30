@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<h2>Liste de vos photos</h2>
+		<div class="row flex">
+			{% for photo in photos %}
+				<div class="col-8">
+					<table class="table table-striped">
+						<tr>
+							<th>Titre</th>
+							<th>Date</th>
+							<th>Nombre de commentaire</th>
+							<th></th>
+						</tr>
+						<tr>
+							<td>{{ photo.title }}</td>
+							<td>{{ photo.postAt }}</td>
+							<td>{{photo.comments|length}}</td>
+							<td>
+								<a href="{{ path("photo.delete", {id: photo.id}) }}" class="btn btn-secondary">
+									Supprimer</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			{% endfor %}
+			<div class="col-4">
+				
+				<a href="{{ path("photo.new") }}" class="btn btn-primary">Ajouter une photo</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+
+

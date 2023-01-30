@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+{% block title 'Uploader une photo' %}
+{% block body %}
+	<div class="container mt-4">
+		{{ form_start(form) }}
+		<div class="row">
+			<div class="col-md-4">{{  form_row(form.title) }}</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">{{  form_row(form.imageFile) }}</div>
+		</div>
+		<button class="btn btn-primary">Poster</button>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}
